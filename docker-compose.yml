@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+  postgres:
+    container_name: postgres_nhieupv
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-dbnhieupv}
+    ports:
+      - "5432:5432"
+  spring-hello:
+    container_name: spring-hello
+    build:
+        context: demo
+        dockerfile: Dockerfile
+    image: spring-hello:latest
+    ports:
+        - 18080:8080
+       
